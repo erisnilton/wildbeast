@@ -20,12 +20,23 @@ a {
 }
 img {
   display: block;
-  max-width: 200px;
+  width: 100%;
   border-radius: 5px;
+  object-fit: cover;
 }
+/* HEADER */
 
 .logo {
   max-width: 200px;
+}
+
+.header {
+  grid-area: header;
+  background: linear-gradient(135deg, #8844ee, #b07dfb);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
 }
 
 .header nav ul {
@@ -34,7 +45,7 @@ img {
 }
 
 .header nav ul li + li {
-  margin-left: 15px;
+  margin-left: 30px;
 }
 
 .header nav a {
@@ -59,15 +70,6 @@ img {
     "header header header"
     "sidenav content anuncios"
     "footer footer footer";
-} 
-
-.header {
-  grid-area: header;
-  background: linear-gradient(135deg, #8844ee, #b07dfb);
-  padding: 30px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
 }
 
 .sidernav {
@@ -221,6 +223,7 @@ p {
   align-content: start;
   padding: 30px;
   gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr ));
 }
 
 footer {
@@ -232,4 +235,79 @@ footer p {
   color: white;
   text-align: center;
   padding: 30px;
+}
+
+@keyframes seta {
+    from {
+        right: 30px;
+    }
+    to {
+        right: 20px;
+    }
+}
+@media (max-width: 1200px) {
+  .estrutura {
+    grid-template-areas:
+      "header header header"
+      "sidenav content content"
+      "sidenav anuncios anuncios"
+      "footer footer footer";
+  }
+}
+@media (max-width: 760px) {
+  .estrutura {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "header"
+      "sidenav"
+      "content"
+      "anuncios"
+      "footer";
+  }
+
+  .header {
+    grid-template-columns: auto;
+  }
+
+  .logo {
+    margin-bottom: 20px;
+  }
+
+  .header nav a {
+    font-size: 1em;
+  }
+
+  .sidernav ul {
+    display: flex;
+  }
+  .sidernav li {
+    flex: 1 0 60px;
+  }
+  .sidernav {
+      position: relative;
+    padding: 0 30px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .sidernav::after{
+      content: '→';
+      position: absolute;
+      top: 5px;
+      right: 30px;
+      color: rgba(0,0,0,.3);
+      animation: seta 0.5s ease-in 0s infinite alternate;
+  }
+  .header nav ul li + li {
+    margin-left: 10px;
+  }
+  .sidernav ul li a {
+    margin: 30px 30px 30px 0px;
+  }
+}
+
+@media(max-width:600px) {
+    .content{
+        grid-template-columns: auto;
+    }
 }
