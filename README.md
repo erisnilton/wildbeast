@@ -1,6 +1,6 @@
 # wildbeast
 
-![landpage](img/screenshort.png)
+![wildbeast](img/wildbeast.gif)
 
 ### Porque desse projeto?
 
